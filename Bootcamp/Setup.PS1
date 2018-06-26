@@ -447,7 +447,7 @@ Set-AzureKeyVaultSecret -VaultName $MySecretKeyVault -Name 'SubscriptionPassword
 $SubscriptionVault = Get-AzurermKeyVault -VaultName $MySecretKeyVault -ResourceGroupName $MySecretsRG 
 $SubscriptionSecret = ConvertTo-SecureString -String $($SubscriptionVault.VaultUri) -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName $KeyVaultName1 -Name $((Get-AzureRmContext).Subscription.ID) -SecretValue $SubscriptionSecret 
-
+Write-Warning "Client Secret to be used by API consumers : $($PasswordCredential.Value)"
 #
 # A ce stade, il faut faire le lien entre WebApp et Application Azure AD Manuellement, cela reste à creuser
 #
